@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiador de Color de Fondo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+
+        .contenedor-controles {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            width: 250px;
+        }
+
+        input[type="color"] {
+            border: none;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            background: none;
+        }
+
+        #mensaje {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #f70909;
+            text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor-controles">
+        <input type="text" id="inputTexto" placeholder="Escribe tu mensaje aquí..." value="Hola, ¿cómo estás?">
+        <input type="color" id="selectorColor" value="#ffffff">
+    </div>
+
+    <h1 id="mensaje">Hola, ¿cómo estás?</h1>
+
+    <script>
+        const inputTexto = document.getElementById('inputTexto');
+        const selectorColor = document.getElementById('selectorColor');
+        const mensaje = document.getElementById('mensaje');
+
+        // Actualizar el texto en tiempo real cuando escribes
+        inputTexto.addEventListener('input', () => {
+            mensaje.textContent = inputTexto.value || ' ';
+        });
+
+        // Actualizar el color de fondo en tiempo real al elegir un color
+        selectorColor.addEventListener('input', () => {
+            document.body.style.backgroundColor = selectorColor.value;
+        });
+    </script>
+
+</body>
+</html>
